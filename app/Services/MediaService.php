@@ -17,6 +17,6 @@ class MediaService
         $mediaFile->name = $req->file->getClientOriginalName();
         $mediaFile->file_path = '/storage/' . $filePath;
         $mediaFile->save();
-        return redirect()->route('generate', ['pathToFile' => $filePath]);
+        return $filePath;
     }
 }

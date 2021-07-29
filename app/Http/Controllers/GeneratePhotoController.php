@@ -14,7 +14,7 @@ class GeneratePhotoController extends Controller
         $this->generatePhotoService = app(GeneratePhotoService::class);
     }
 
-    public function generate(Request $req) {
-        return $this->generatePhotoService->generate($req);
+    public function generate($path) {
+        return $this->generatePhotoService->generate($path);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GeneratePhotoService;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 
 class UploadMediaController extends Controller
 {
     private $mediaService;
+
 
     public function __construct()
     {
@@ -20,7 +22,8 @@ class UploadMediaController extends Controller
 
     public function store(Request $req) {
         if($req->file()) {
-            return $this->mediaService->store($req);
+            $path = $this->mediaService->store($req);
+            return (new GeneratePhotoService())->generate($path);
         }
     }
 }
